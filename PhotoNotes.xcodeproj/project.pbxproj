@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA52EFFB266956220044E313 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA52EFFA266956220044E313 /* Note.swift */; };
 		AAD25F03266954070070447B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD25F02266954070070447B /* AppDelegate.swift */; };
 		AAD25F05266954070070447B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD25F04266954070070447B /* SceneDelegate.swift */; };
 		AAD25F07266954070070447B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD25F06266954070070447B /* ViewController.swift */; };
 		AAD25F0A266954070070447B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD25F08266954070070447B /* Main.storyboard */; };
 		AAD25F0C266954080070447B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD25F0B266954080070447B /* Assets.xcassets */; };
 		AAD25F0F266954080070447B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD25F0D266954080070447B /* LaunchScreen.storyboard */; };
+		AAE6D7F8266C15EB00F9AD05 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE6D7F7266C15EB00F9AD05 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA52EFFA266956220044E313 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		AAD25EFF266954070070447B /* PhotoNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD25F02266954070070447B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAD25F04266954070070447B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		AAD25F0B266954080070447B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAD25F0E266954080070447B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAD25F10266954080070447B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAE6D7F7266C15EB00F9AD05 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +65,9 @@
 				AAD25F06266954070070447B /* ViewController.swift */,
 				AAD25F08266954070070447B /* Main.storyboard */,
 				AAD25F0B266954080070447B /* Assets.xcassets */,
+				AA52EFFA266956220044E313 /* Note.swift */,
 				AAD25F0D266954080070447B /* LaunchScreen.storyboard */,
+				AAE6D7F7266C15EB00F9AD05 /* Extensions.swift */,
 				AAD25F10266954080070447B /* Info.plist */,
 			);
 			path = PhotoNotes;
@@ -137,9 +143,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAE6D7F8266C15EB00F9AD05 /* Extensions.swift in Sources */,
 				AAD25F07266954070070447B /* ViewController.swift in Sources */,
 				AAD25F03266954070070447B /* AppDelegate.swift in Sources */,
 				AAD25F05266954070070447B /* SceneDelegate.swift in Sources */,
+				AA52EFFB266956220044E313 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -271,7 +279,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -293,7 +301,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Azat-Kaiumov.PhotoNotes";
+				PRODUCT_BUNDLE_IDENTIFIER = "Azat-Kaiumov.Project1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -312,7 +320,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Azat-Kaiumov.PhotoNotes";
+				PRODUCT_BUNDLE_IDENTIFIER = "Azat-Kaiumov.Project1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
