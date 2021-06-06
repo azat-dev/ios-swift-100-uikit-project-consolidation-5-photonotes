@@ -69,6 +69,23 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
         viewController.image = image
         present(viewController, animated: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let cell = sender as? UITableViewCell else {
+            return
+        }
+        
+        guard let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
+        
+        guard let detailViewController = segue.destination as? DetailViewController else {
+            return
+        }
+        
+        let note = notes[indexPath.row]
+        detailViewController.note = note
+    }
 }
 
 // MARK: - Camera Methods
