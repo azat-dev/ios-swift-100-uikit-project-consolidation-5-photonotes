@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA49BF1C266D4FF300E3C93E /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA49BF1B266D4FF300E3C93E /* TextFieldWithPadding.swift */; };
 		AA52EFFB266956220044E313 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA52EFFA266956220044E313 /* Note.swift */; };
 		AACDDC61266CBC59001CA0EF /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACDDC60266CBC59001CA0EF /* NewNoteViewController.swift */; };
 		AAD25F03266954070070447B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD25F02266954070070447B /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA49BF1B266D4FF300E3C93E /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		AA52EFFA266956220044E313 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		AACDDC60266CBC59001CA0EF /* NewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
 		AAD25EFF266954070070447B /* PhotoNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,7 @@
 				AACDDC60266CBC59001CA0EF /* NewNoteViewController.swift */,
 				AAD25F0D266954080070447B /* LaunchScreen.storyboard */,
 				AAE6D7F7266C15EB00F9AD05 /* Extensions.swift */,
+				AA49BF1B266D4FF300E3C93E /* TextFieldWithPadding.swift */,
 				AAD25F10266954080070447B /* Info.plist */,
 			);
 			path = PhotoNotes;
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA49BF1C266D4FF300E3C93E /* TextFieldWithPadding.swift in Sources */,
 				AAE6D7F8266C15EB00F9AD05 /* Extensions.swift in Sources */,
 				AAD25F07266954070070447B /* ViewController.swift in Sources */,
 				AAD25F03266954070070447B /* AppDelegate.swift in Sources */,

@@ -9,7 +9,8 @@ import UIKit
 
 class NewNoteViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet var textField: UITextField!
+    @IBOutlet var textField: TextFieldWithPadding!
+    @IBOutlet var closeButton: UIButton!
     
     var image: UIImage!
     var didSubmit: ((String, UIImage) -> Void)!
@@ -18,17 +19,19 @@ class NewNoteViewController: UIViewController {
         super.viewDidLoad()
 
         imageView.image = image
+        textField.textPadding = .init(top: 5, left: 15, bottom: 5, right: 15)
+        closeButton.layer.zPosition = 10
         initKeyboardEventsObserver()
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
         guard let title = textField.text else {
-            textField.shake()
+            textField.shake(maxAmplitude: 10.0)
             return
         }
         
         if title.isEmpty {
-            textField.shake()
+            textField.shake(maxAmplitude: 10.0)
             return
         }
         
