@@ -61,42 +61,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5sJ-5Y-UJp">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gtw-0K-4pO" userLabel="InnerView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                            </imageView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94Z-0n-EEH" userLabel="AddButton">
-                                <rect key="frame" x="351" y="825" width="48" height="22"/>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                <state key="normal" title="Add">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="addButtonTapped:" destination="1Dn-fw-f5M" eventType="touchUpInside" id="Fhb-qR-NDI"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tNg-3x-aEp" userLabel="TextField" customClass="TextFieldWithPadding" customModule="PhotoNotes" customModuleProvider="target">
-                                <rect key="frame" x="15" y="825" width="321" height="22"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="done"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBd-sn-KYN" userLabel="CloseButton">
-                                <rect key="frame" x="15" y="59" width="22" height="20"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5sJ-5Y-UJp">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tNg-3x-aEp" userLabel="TextField" customClass="TextFieldWithPadding" customModule="PhotoNotes" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="781" width="321" height="22"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="done"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94Z-0n-EEH" userLabel="AddButton">
+                                        <rect key="frame" x="351" y="781" width="48" height="22"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <state key="normal" title="Add">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addButtonTapped:" destination="1Dn-fw-f5M" eventType="touchUpInside" id="Fhb-qR-NDI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="1Mz-Fb-82t"/>
-                                    <constraint firstAttribute="width" secondItem="SBd-sn-KYN" secondAttribute="height" multiplier="1.1" id="bPR-9e-bb0"/>
+                                    <constraint firstItem="94Z-0n-EEH" firstAttribute="leading" secondItem="tNg-3x-aEp" secondAttribute="trailing" constant="15" id="12c-Nu-vNw"/>
+                                    <constraint firstAttribute="bottom" secondItem="5sJ-5Y-UJp" secondAttribute="bottom" id="Hxg-Lm-Oel"/>
+                                    <constraint firstItem="tNg-3x-aEp" firstAttribute="centerY" secondItem="94Z-0n-EEH" secondAttribute="centerY" id="Ib2-tQ-zUB"/>
+                                    <constraint firstItem="5sJ-5Y-UJp" firstAttribute="leading" secondItem="Gtw-0K-4pO" secondAttribute="leading" id="Qhr-dc-OqF"/>
+                                    <constraint firstItem="tNg-3x-aEp" firstAttribute="height" secondItem="94Z-0n-EEH" secondAttribute="height" id="asw-Ik-0LI"/>
+                                    <constraint firstAttribute="bottom" secondItem="94Z-0n-EEH" secondAttribute="bottom" constant="15" id="blc-Wk-1sD"/>
+                                    <constraint firstAttribute="trailing" secondItem="5sJ-5Y-UJp" secondAttribute="trailing" id="egf-1M-m16"/>
+                                    <constraint firstItem="5sJ-5Y-UJp" firstAttribute="top" secondItem="Gtw-0K-4pO" secondAttribute="top" id="k4U-dU-w0n"/>
+                                    <constraint firstAttribute="trailing" secondItem="94Z-0n-EEH" secondAttribute="trailing" constant="15" id="oag-2G-kf2"/>
+                                    <constraint firstItem="tNg-3x-aEp" firstAttribute="leading" secondItem="Gtw-0K-4pO" secondAttribute="leading" constant="15" id="rgb-Zm-1HA"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBd-sn-KYN" userLabel="CloseButton">
+                                <rect key="frame" x="15" y="59" width="27.5" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="m3H-VG-hVD"/>
+                                    <constraint firstAttribute="width" secondItem="SBd-sn-KYN" secondAttribute="height" multiplier="1.1" id="nHa-go-hqG"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="xmark" catalog="system"/>
@@ -108,23 +126,19 @@
                         <viewLayoutGuide key="safeArea" id="sWT-Pb-zFE"/>
                         <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="sWT-Pb-zFE" firstAttribute="trailing" secondItem="94Z-0n-EEH" secondAttribute="trailing" constant="15" id="1xR-NQ-xGC"/>
-                            <constraint firstItem="94Z-0n-EEH" firstAttribute="leading" secondItem="tNg-3x-aEp" secondAttribute="trailing" constant="15" id="55l-xM-LOe"/>
-                            <constraint firstItem="sWT-Pb-zFE" firstAttribute="trailing" secondItem="5sJ-5Y-UJp" secondAttribute="trailing" id="Eaf-4G-gTQ"/>
-                            <constraint firstItem="tNg-3x-aEp" firstAttribute="leading" secondItem="sWT-Pb-zFE" secondAttribute="leading" constant="15" id="Ejm-CB-nIn"/>
-                            <constraint firstItem="SBd-sn-KYN" firstAttribute="top" secondItem="sWT-Pb-zFE" secondAttribute="top" constant="15" id="HLA-pP-RPJ"/>
-                            <constraint firstItem="5sJ-5Y-UJp" firstAttribute="leading" secondItem="sWT-Pb-zFE" secondAttribute="leading" id="J7k-ou-HvF"/>
-                            <constraint firstItem="SBd-sn-KYN" firstAttribute="leading" secondItem="sWT-Pb-zFE" secondAttribute="leading" constant="15" id="QTT-59-7hn"/>
-                            <constraint firstItem="sWT-Pb-zFE" firstAttribute="bottom" secondItem="5sJ-5Y-UJp" secondAttribute="bottom" id="QcN-gP-EFq"/>
-                            <constraint firstItem="tNg-3x-aEp" firstAttribute="centerY" secondItem="94Z-0n-EEH" secondAttribute="centerY" id="S0k-f3-MoK"/>
-                            <constraint firstItem="sWT-Pb-zFE" firstAttribute="bottom" secondItem="94Z-0n-EEH" secondAttribute="bottom" constant="15" id="Zvs-Ob-hco"/>
-                            <constraint firstItem="94Z-0n-EEH" firstAttribute="height" secondItem="tNg-3x-aEp" secondAttribute="height" id="cTc-y0-SKI"/>
-                            <constraint firstItem="5sJ-5Y-UJp" firstAttribute="top" secondItem="sWT-Pb-zFE" secondAttribute="top" id="gFF-e4-bXM"/>
+                            <constraint firstItem="sWT-Pb-zFE" firstAttribute="bottom" secondItem="Gtw-0K-4pO" secondAttribute="bottom" identifier="innerViewBottomConstraint" id="C5H-ts-Lc7"/>
+                            <constraint firstItem="SBd-sn-KYN" firstAttribute="top" secondItem="sWT-Pb-zFE" secondAttribute="top" constant="15" id="Iqh-Mc-V0Z"/>
+                            <constraint firstItem="sWT-Pb-zFE" firstAttribute="trailing" secondItem="Gtw-0K-4pO" secondAttribute="trailing" id="igl-e3-I28"/>
+                            <constraint firstItem="Gtw-0K-4pO" firstAttribute="leading" secondItem="sWT-Pb-zFE" secondAttribute="leading" id="leM-qj-Umg"/>
+                            <constraint firstItem="Gtw-0K-4pO" firstAttribute="top" secondItem="sWT-Pb-zFE" secondAttribute="top" id="pxl-t0-Nh4"/>
+                            <constraint firstItem="SBd-sn-KYN" firstAttribute="leading" secondItem="sWT-Pb-zFE" secondAttribute="leading" constant="15" id="wEU-fk-gVT"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="SBd-sn-KYN" id="VKl-a9-09E"/>
                         <outlet property="imageView" destination="5sJ-5Y-UJp" id="XEb-ry-Xfb"/>
+                        <outlet property="innerView" destination="Gtw-0K-4pO" id="PxI-pP-tbw"/>
+                        <outlet property="innerViewBottomConstraint" destination="C5H-ts-Lc7" id="Toe-Bv-DtP"/>
                         <outlet property="textField" destination="tNg-3x-aEp" id="jnD-k5-8Py"/>
                     </connections>
                 </viewController>

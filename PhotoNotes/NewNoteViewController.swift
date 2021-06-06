@@ -11,6 +11,8 @@ class NewNoteViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var textField: TextFieldWithPadding!
     @IBOutlet var closeButton: UIButton!
+    @IBOutlet var innerView: UIView!
+    @IBOutlet var innerViewBottomConstraint: NSLayoutConstraint!
     
     var image: UIImage!
     var didSubmit: ((String, UIImage) -> Void)!
@@ -69,14 +71,23 @@ extension NewNoteViewController {
             return
         }
         
-        if view.frame.origin.y == 0 {
-            view.frame.origin.y -= keyboardSize.cgRectValue.height
+        if innerViewBottomConstraint.constant == 0 {
+            innerViewBottomConstraint.constant = keyboardSize.cgRectValue.height
+            view.layoutIfNeeded()
         }
+//        if innerView.frame.origin.y == 0 {
+//            innerView.frame.origin.y -= keyboardSize.cgRectValue.height
+//        }
     }
     
     @objc func keyboardWillHide() {
-        if view.frame.origin.y != 0 {
-            view.frame.origin.y = 0
+//        if innerView.frame.origin.y != 0 {
+//            innerView.frame.origin.y = 0
+//        }
+        
+        if innerViewBottomConstraint.constant != 0 {
+            innerViewBottomConstraint.constant = 0
+            view.layoutIfNeeded()
         }
     }
 }
