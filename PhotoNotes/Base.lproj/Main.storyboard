@@ -3,6 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,19 +41,103 @@
                             <outlet property="delegate" destination="OW7-ma-pKf" id="JHw-PS-V4P"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="hrR-1R-R1z"/>
+                    <navigationItem key="navigationItem" id="hrR-1R-R1z">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="n9O-hh-ZbF" userLabel="AddButton">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="OW7-ma-pKf" id="MdG-Xd-zZx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3Q-WY-z8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-276.81159420289856" y="-83.035714285714278"/>
+        </scene>
+        <!--NewNoteViewController-->
+        <scene sceneID="eIx-yp-oJf">
+            <objects>
+                <viewController storyboardIdentifier="NewNoteViewController" modalPresentationStyle="overFullScreen" id="1Dn-fw-f5M" userLabel="NewNoteViewController" customClass="NewNoteViewController" customModule="PhotoNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sCb-PJ-mho">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5sJ-5Y-UJp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94Z-0n-EEH" userLabel="AddButton">
+                                <rect key="frame" x="351" y="822.5" width="48" height="24.5"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="1Dn-fw-f5M" eventType="touchUpInside" id="Fhb-qR-NDI"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tNg-3x-aEp" userLabel="TextField">
+                                <rect key="frame" x="15" y="822.5" width="321" height="24.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="done"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBd-sn-KYN" userLabel="CloseButton">
+                                <rect key="frame" x="15" y="59" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="1Mz-Fb-82t"/>
+                                    <constraint firstAttribute="width" secondItem="SBd-sn-KYN" secondAttribute="height" id="bPR-9e-bb0"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="xmark" catalog="system"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="1Dn-fw-f5M" eventType="touchUpInside" id="BgS-Y8-sZN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sWT-Pb-zFE"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sWT-Pb-zFE" firstAttribute="trailing" secondItem="94Z-0n-EEH" secondAttribute="trailing" constant="15" id="1xR-NQ-xGC"/>
+                            <constraint firstItem="94Z-0n-EEH" firstAttribute="leading" secondItem="tNg-3x-aEp" secondAttribute="trailing" constant="15" id="55l-xM-LOe"/>
+                            <constraint firstItem="sWT-Pb-zFE" firstAttribute="trailing" secondItem="5sJ-5Y-UJp" secondAttribute="trailing" id="Eaf-4G-gTQ"/>
+                            <constraint firstItem="tNg-3x-aEp" firstAttribute="leading" secondItem="sWT-Pb-zFE" secondAttribute="leading" constant="15" id="Ejm-CB-nIn"/>
+                            <constraint firstItem="SBd-sn-KYN" firstAttribute="top" secondItem="sWT-Pb-zFE" secondAttribute="top" constant="15" id="HLA-pP-RPJ"/>
+                            <constraint firstItem="5sJ-5Y-UJp" firstAttribute="leading" secondItem="sWT-Pb-zFE" secondAttribute="leading" id="J7k-ou-HvF"/>
+                            <constraint firstItem="SBd-sn-KYN" firstAttribute="leading" secondItem="sWT-Pb-zFE" secondAttribute="leading" constant="15" id="QTT-59-7hn"/>
+                            <constraint firstItem="sWT-Pb-zFE" firstAttribute="bottom" secondItem="5sJ-5Y-UJp" secondAttribute="bottom" id="QcN-gP-EFq"/>
+                            <constraint firstItem="tNg-3x-aEp" firstAttribute="centerY" secondItem="94Z-0n-EEH" secondAttribute="centerY" id="S0k-f3-MoK"/>
+                            <constraint firstItem="sWT-Pb-zFE" firstAttribute="bottom" secondItem="94Z-0n-EEH" secondAttribute="bottom" constant="15" id="Zvs-Ob-hco"/>
+                            <constraint firstItem="94Z-0n-EEH" firstAttribute="height" secondItem="tNg-3x-aEp" secondAttribute="height" id="cTc-y0-SKI"/>
+                            <constraint firstItem="5sJ-5Y-UJp" firstAttribute="top" secondItem="sWT-Pb-zFE" secondAttribute="top" id="gFF-e4-bXM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="5sJ-5Y-UJp" id="XEb-ry-Xfb"/>
+                        <outlet property="textField" destination="tNg-3x-aEp" id="jnD-k5-8Py"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ruD-Su-uht" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-277" y="601"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="j2R-48-AMa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gQz-hp-ZrU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Fm-UC-gr8">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="0Fm-UC-gr8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -65,6 +151,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

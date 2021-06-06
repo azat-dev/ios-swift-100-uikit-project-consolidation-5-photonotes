@@ -10,12 +10,14 @@ import AVFoundation
 
 class ViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        takePictureByCamera()
+    }
+    
     var notes = [Note]()
     
     private func initNavBar() {
         title = "Photo Notes"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        initNavBarAddButton()
     }
     
     override func viewDidLoad() {
@@ -24,42 +26,42 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
         loadData()
     }
     
-    private func initNavBarAddButton() {
-        navigationItem.rightBarButtonItem = .init(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(addButtonTapped)
-        )
-    }
-    
     private func imageSelected(image: UIImage) {
-        guard let jpegData = image.jpegData(compressionQuality: 0.8) else {
-            return
-        }
+        alertCreateNote(image: image)
+        //        guard let jpegData = image.jpegData(compressionQuality: 0.8) else {
+        //            return
+        //        }
+        //
+        //        guard let documentsPath = FileManager.getDocumentsDirectory() else {
+        //            return
+        //        }
         
-        guard let documentsPath = FileManager.getDocumentsDirectory() else {
-            return
-        }
+        //        let fileName = UUID().uuidString
+        //        let filePath = documentsPath.appendingPathComponent(fileName)
         
-        let fileName = UUID().uuidString
-        let filePath = documentsPath.appendingPathComponent(fileName)
-        
-        do {
-            try jpegData.write(to: filePath)
-        } catch {
-            return
-        }
-        
-        notes.append(.init(name: "Unknown", image: fileName))
-        
-        let indexPath = IndexPath(row: notes.count - 1, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
-        
-        saveData()
+        //        do {
+        //            try jpegData.write(to: filePath)
+        //        } catch {
+        //            return
+        //        }
+        //
+        //        notes.append(.init(name: "Unknown", image: fileName))
+        //
+        //        let indexPath = IndexPath(row: notes.count - 1, section: 0)
+        //        tableView.insertRows(at: [indexPath], with: .automatic)
+        //
+        //        saveData()
     }
     
-    @objc private func addButtonTapped() {
-        takePictureByCamera()
+    private func alertCreateNote(image: UIImage) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(identifier: "NewNoteViewController") as? NewNoteViewController else {
+            print("NO")
+            return
+        }
+        
+        viewController.image = image
+        present(viewController, animated: true)
     }
 }
 
@@ -70,13 +72,15 @@ extension ViewController {
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        defer { picker.dismiss(animated: true) }
         
         guard let image = info[.originalImage] as? UIImage else {
+            picker.dismiss(animated: true)
             return
         }
         
-        imageSelected(image: image)
+        picker.dismiss(animated: true, completion: {
+            self.imageSelected(image: image)
+        })
     }
     
     private func alertCameraAccessNeeded() {
