@@ -78,6 +78,9 @@
                                                 <integer key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="textFieldDone:" destination="1Dn-fw-f5M" eventType="primaryActionTriggered" id="NU3-IH-9qq"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94Z-0n-EEH" userLabel="AddButton">
                                         <rect key="frame" x="351" y="781" width="48" height="22"/>

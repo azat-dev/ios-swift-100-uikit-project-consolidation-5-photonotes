@@ -14,6 +14,8 @@ class NewNoteViewController: UIViewController {
     @IBOutlet var innerView: UIView!
     @IBOutlet var innerViewBottomConstraint: NSLayoutConstraint!
     
+
+    
     var image: UIImage!
     var didSubmit: ((String, UIImage) -> Void)!
     
@@ -26,7 +28,7 @@ class NewNoteViewController: UIViewController {
         initKeyboardEventsObserver()
     }
     
-    @IBAction func addButtonTapped(_ sender: UIButton) {
+    private func submit() {
         guard let title = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             textField.shake(maxAmplitude: 10.0)
             return
@@ -42,8 +44,16 @@ class NewNoteViewController: UIViewController {
         }
     }
     
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+        submit()
+    }
+    
     @IBAction func closeButtonTapped(_ sender: UIButton) {
         dismiss(animated: true)
+    }
+    
+    @IBAction func textFieldDone(_ sender: Any) {
+        submit()
     }
 }
 
