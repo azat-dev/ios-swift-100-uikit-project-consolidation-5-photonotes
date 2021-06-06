@@ -19,7 +19,7 @@ class NewNoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         imageView.image = image
         textField.textPadding = .init(top: 5, left: 15, bottom: 5, right: 15)
         closeButton.layer.zPosition = 10
@@ -27,7 +27,7 @@ class NewNoteViewController: UIViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        guard let title = textField.text else {
+        guard let title = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             textField.shake(maxAmplitude: 10.0)
             return
         }
@@ -38,7 +38,7 @@ class NewNoteViewController: UIViewController {
         }
         
         dismiss(animated: true) {
-            self.didSubmit(title, self.image)
+            self.didSubmit?(title, self.image)
         }
     }
     
@@ -75,16 +75,9 @@ extension NewNoteViewController {
             innerViewBottomConstraint.constant = keyboardSize.cgRectValue.height
             view.layoutIfNeeded()
         }
-//        if innerView.frame.origin.y == 0 {
-//            innerView.frame.origin.y -= keyboardSize.cgRectValue.height
-//        }
     }
     
     @objc func keyboardWillHide() {
-//        if innerView.frame.origin.y != 0 {
-//            innerView.frame.origin.y = 0
-//        }
-        
         if innerViewBottomConstraint.constant != 0 {
             innerViewBottomConstraint.constant = 0
             view.layoutIfNeeded()

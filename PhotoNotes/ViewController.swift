@@ -27,37 +27,43 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
     }
     
     private func imageSelected(image: UIImage) {
-        alertCreateNote(image: image)
-        //        guard let jpegData = image.jpegData(compressionQuality: 0.8) else {
-        //            return
-        //        }
-        //
-        //        guard let documentsPath = FileManager.getDocumentsDirectory() else {
-        //            return
-        //        }
-        
-        //        let fileName = UUID().uuidString
-        //        let filePath = documentsPath.appendingPathComponent(fileName)
-        
-        //        do {
-        //            try jpegData.write(to: filePath)
-        //        } catch {
-        //            return
-        //        }
-        //
-        //        notes.append(.init(name: "Unknown", image: fileName))
-        //
-        //        let indexPath = IndexPath(row: notes.count - 1, section: 0)
-        //        tableView.insertRows(at: [indexPath], with: .automatic)
-        //
-        //        saveData()
+        openNewNoteViewController(image: image)
     }
     
-    private func alertCreateNote(image: UIImage) {
+    private func submitNote(title: String, image: UIImage) {
+        guard let jpegData = image.jpegData(compressionQuality: 0.8) else {
+            return
+        }
+
+        guard let documentsPath = FileManager.getDocumentsDirectory() else {
+            return
+        }
+
+        let fileName = UUID().uuidString
+        let filePath = documentsPath.appendingPathComponent(fileName)
+
+        do {
+            try jpegData.write(to: filePath)
+        } catch {
+            return
+        }
+
+        notes.append(.init(name: title, image: fileName))
+
+        let indexPath = IndexPath(row: notes.count - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+
+        saveData()
+    }
+    
+    private func openNewNoteViewController(image: UIImage) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let viewController = storyboard.instantiateViewController(identifier: "NewNoteViewController") as? NewNoteViewController else {
-            print("NO")
-            return
+            fatalError("Can't instantiate NewNoteController")
+        }
+        
+        viewController.didSubmit = {
+            [weak self] title, image in self?.submitNote(title: title, image: image)
         }
         
         viewController.image = image
