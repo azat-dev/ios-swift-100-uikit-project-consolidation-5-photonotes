@@ -25,11 +25,21 @@ extension UIFont {
 }
 
 extension UIView {
-    func shake() {
+    func shake(maxAmplitude: Double = 20.0) {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         animation.duration = 0.6
-        animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
+        animation.values = [
+            -maxAmplitude,
+            maxAmplitude,
+            -maxAmplitude,
+            maxAmplitude,
+            -maxAmplitude / 2,
+            maxAmplitude / 2,
+            -maxAmplitude / 4,
+            maxAmplitude / 4,
+            0.0
+        ]
         layer.add(animation, forKey: "shake")
     }
 }
