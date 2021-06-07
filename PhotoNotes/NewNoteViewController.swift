@@ -15,7 +15,6 @@ class NewNoteViewController: UIViewController {
     @IBOutlet var innerViewBottomConstraint: NSLayoutConstraint!
     
 
-    
     var image: UIImage!
     var didSubmit: ((String, UIImage) -> Void)!
     

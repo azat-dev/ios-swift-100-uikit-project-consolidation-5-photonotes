@@ -13,11 +13,26 @@ class DetailViewController: UIViewController {
     
     var note: Note!
     var didRemoved: ((Int, Note) -> Void)!
+    var didEdited: ((Int, Note) -> Void)!
+    
+    private func loadImage() {
+        guard let documentsPath = FileManager.getDocumentsDirectory() else {
+            return
+        }
+        
+        let imagePath = documentsPath.appendingPathComponent(note.image)
+        
+        guard let image = UIImage(contentsOfFile: imagePath.path) else {
+            return
+        }
+        
+        imageView.image = image
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        imageView.image = 
         textField.text = note.name
+        loadImage()
     }
 }
