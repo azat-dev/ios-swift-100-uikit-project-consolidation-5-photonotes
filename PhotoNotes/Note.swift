@@ -7,11 +7,13 @@
 
 import Foundation
 
-struct Note: Codable {
+class Note: Codable {
+    var id: String
     var name: String
     var image: String
     
     init(name: String, image: String) {
+        self.id = UUID().uuidString
         self.name = name
         self.image = image
     }

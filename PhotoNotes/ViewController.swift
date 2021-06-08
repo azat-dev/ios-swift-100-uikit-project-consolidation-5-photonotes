@@ -8,21 +8,12 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
-        takePictureByCamera()
-    }
+class ViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, DetailViewControllerDelegate {
     
     var notes = [Note]()
     
-    private func initNavBar() {
-        title = "Photo Notes"
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        initNavBar()
         loadData()
     }
     
@@ -34,25 +25,25 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
         guard let jpegData = image.jpegData(compressionQuality: 0.8) else {
             return
         }
-
+        
         guard let documentsPath = FileManager.getDocumentsDirectory() else {
             return
         }
-
+        
         let fileName = UUID().uuidString
         let filePath = documentsPath.appendingPathComponent(fileName)
-
+        
         do {
             try jpegData.write(to: filePath)
         } catch {
             return
         }
-
+        
         notes.append(.init(name: title, image: fileName))
-
+        
         let indexPath = IndexPath(row: notes.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
-
+        
         saveData()
     }
     
@@ -70,6 +61,28 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
         present(viewController, animated: true)
     }
     
+    func didChangeTitle(noteId: String, newTitle: String) {
+        guard let noteIndex = notes.firstIndex(where: { $0.id == noteId}) else {
+            return
+        }
+        
+        notes[noteIndex].name = newTitle
+        let indexPath = IndexPath(row: noteIndex, section: 0)
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
+    func didRemove(noteId: String) {
+        guard let noteIndex = notes.firstIndex(where: { $0.id == noteId}) else {
+            return
+        }
+        
+        
+        let indexPath = IndexPath(row: noteIndex, section: 0)
+        notes.remove(at: noteIndex)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let cell = sender as? UITableViewCell else {
             return
@@ -85,6 +98,30 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
         
         let note = notes[indexPath.row]
         detailViewController.note = note
+        detailViewController.delegate = self
+    }
+    
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        takePictureByCamera()
+    }
+    
+    @IBAction func unwindToViewController(_ unwindSegue: UIStoryboardSegue) {
+        guard let segue = unwindSegue as? DetailViewControllerUnwindSegue else {
+            return
+        }
+        
+        segue.didComplete = {
+            [weak self, weak segue] in
+            guard let self = self else {
+                return
+            }
+            
+            guard let sourceController = segue?.source as? DetailViewController else {
+                return
+            }
+            
+            self.didRemove(noteId: sourceController.note.id)
+        }
     }
 }
 
@@ -129,7 +166,7 @@ extension ViewController {
         let picker = UIImagePickerController()
         picker.allowsEditing = false
         picker.delegate = self
-        picker.sourceType = .camera
+        picker.sourceType = .photoLibrary
         
         present(picker, animated: true)
     }

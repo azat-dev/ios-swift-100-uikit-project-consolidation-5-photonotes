@@ -7,13 +7,27 @@
 
 import UIKit
 
+protocol DetailViewControllerDelegate: AnyObject {
+    func didChangeTitle(noteId: String, newTitle: String)
+    func didRemove(noteId: String)
+}
+
+class DetailViewControllerUnwindSegue: UIStoryboardSegue {
+    var didComplete: (() -> Void)?
+    
+    override func perform() {
+        super.perform()
+        didComplete?();
+    }
+}
+
 class DetailViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var textField: TextFieldWithPadding!
     
     var note: Note!
-    var didRemoved: ((Int, Note) -> Void)!
-    var didEdited: ((Int, Note) -> Void)!
+    
+    weak var delegate: DetailViewControllerDelegate?
     
     private func loadImage() {
         guard let documentsPath = FileManager.getDocumentsDirectory() else {
@@ -31,8 +45,26 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         textField.text = note.name
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.white.cgColor
+        textField.layer.cornerRadius = 15
+        textField.font = .preferredFont(forTextStyle: .title1, weight: .bold)
+        textField.textPadding = .init(top: 5, left: 15, bottom: 5, right: 15)
         loadImage()
+    }
+    
+    @IBAction func textFieldDone(_ sender: TextFieldWithPadding) {
+        guard let title = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
+            return
+        }
+        
+        if title.isEmpty {
+            textField.shake(maxAmplitude: 15)
+            return
+        }
+        
+        delegate?.didChangeTitle(noteId: note.id, newTitle: title)
     }
 }
