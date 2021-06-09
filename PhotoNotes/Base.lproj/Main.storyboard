@@ -18,23 +18,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="zwl-Yl-2Pv" style="IBUITableViewCellStyleDefault" id="vDm-L9-9tP">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="vDm-L9-9tP" customClass="NoteCell" customModule="PhotoNotes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="70.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vDm-L9-9tP" id="dne-tw-nIY">
-                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="70.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zwl-Yl-2Pv">
-                                            <rect key="frame" x="20" y="0.0" width="356.5" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="hYj-aH-3yp">
+                                            <rect key="frame" x="10" y="10.5" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="hYj-aH-3yp" secondAttribute="height" id="WfK-LD-9ys"/>
+                                                <constraint firstAttribute="height" constant="50" id="a7x-vR-qpC"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HN9-fR-hGs">
+                                            <rect key="frame" x="70" y="25" width="304.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hYj-aH-3yp" secondAttribute="bottom" constant="10" id="IiB-54-yim"/>
+                                        <constraint firstItem="hYj-aH-3yp" firstAttribute="leading" secondItem="dne-tw-nIY" secondAttribute="leading" constant="10" id="InV-qr-1Wv"/>
+                                        <constraint firstItem="HN9-fR-hGs" firstAttribute="leading" secondItem="hYj-aH-3yp" secondAttribute="trailing" constant="10" id="ZeG-bX-L54"/>
+                                        <constraint firstItem="hYj-aH-3yp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dne-tw-nIY" secondAttribute="top" constant="10" id="dqe-Qk-hS5"/>
+                                        <constraint firstItem="HN9-fR-hGs" firstAttribute="centerY" secondItem="dne-tw-nIY" secondAttribute="centerY" id="fyj-fz-313"/>
+                                        <constraint firstItem="HN9-fR-hGs" firstAttribute="centerY" secondItem="hYj-aH-3yp" secondAttribute="centerY" id="nRZ-wK-Rlk"/>
+                                        <constraint firstAttribute="trailing" secondItem="HN9-fR-hGs" secondAttribute="trailing" constant="10" id="wFv-zp-TuY"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="labelView" destination="HN9-fR-hGs" id="fOz-Bn-ZxY"/>
+                                    <outlet property="photoView" destination="hYj-aH-3yp" id="4KY-YX-6K9"/>
                                     <segue destination="KZ4-cd-cxE" kind="show" id="Frf-KP-nGC"/>
                                 </connections>
                             </tableViewCell>
@@ -183,6 +200,7 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name..." textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bcc-t5-QoF" userLabel="TextField" customClass="TextFieldWithPadding" customModule="PhotoNotes" customModuleProvider="target">
                                 <rect key="frame" x="15" y="108" width="384" height="31.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>

@@ -166,7 +166,7 @@ extension ViewController {
         let picker = UIImagePickerController()
         picker.allowsEditing = false
         picker.delegate = self
-        picker.sourceType = .photoLibrary
+        picker.sourceType = .camera
         
         present(picker, animated: true)
     }
@@ -228,11 +228,39 @@ extension ViewController {
 
 // MARK: - Table View Methods
 extension ViewController {
+    
+    func displayCell(at indexPath: IndexPath) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            let note = self.notes[indexPath.row]
+            let documentsDirectory = FileManager.getDocumentsDirectory()
+            guard let imagePath = documentsDirectory?.appendingPathComponent(note.image) else {
+                return
+            }
+            
+            let image = UIImage(contentsOfFile: imagePath.path)
+            
+            DispatchQueue.main.async {
+                guard let cell = self.tableView.cellForRow(at: indexPath) as? NoteCell else {
+                    return
+                }
+                
+                cell.photoView.image = image
+                cell.labelView.text = note.name
+            }
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? NoteCell else {
+            fatalError("Can't dequee the cell as a NoteCell")
+        }
         
-        let note = notes[indexPath.row]
-        cell.textLabel?.text = note.name
+        
+        cell.photoView.layer.cornerRadius = 10
+        cell.photoView.layer.borderColor =  UIColor.lightGray.cgColor
+        cell.photoView.layer.borderWidth = 1
+        
+        displayCell(at: indexPath)
         
         return cell
     }
