@@ -14,7 +14,6 @@ class NewNoteViewController: UIViewController {
     @IBOutlet var innerView: UIView!
     @IBOutlet var innerViewBottomConstraint: NSLayoutConstraint!
     
-
     var image: UIImage!
     var didSubmit: ((String, UIImage) -> Void)!
     
@@ -25,6 +24,10 @@ class NewNoteViewController: UIViewController {
         textField.textPadding = .init(top: 5, left: 15, bottom: 5, right: 15)
         closeButton.layer.zPosition = 10
         initKeyboardEventsObserver()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     private func submit() {
